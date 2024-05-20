@@ -4069,7 +4069,6 @@ td:last-child {
     display      : inline-block;
     min-height   : var(--vspace-2);
     margin-bottom: var(--vspace-0_625);
-    padding-left : calc(2.25 * var(--space));
     position     : relative;
 }
 
@@ -4095,7 +4094,7 @@ td:last-child {
 
 .s-testimonials__cite strong {
     font-size  : calc(var(--text-size) * 0.9);
-    font-weight: 500;
+    font-weight: bold;
     line-height: var(--vspace-0_75);
     color      : var(--color-text-dark);
 }
