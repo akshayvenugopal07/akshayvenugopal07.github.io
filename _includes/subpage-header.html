@@ -1,0 +1,15 @@
+<!--
+  Shared header/nav for the secondary pages (works.html, writing.html).
+  Params:
+    extra_anchor — homepage section id for the page's own middle nav link
+    extra_label  — visible text for that link
+-->
+<header>
+  <div class="wrap" style="display:flex;justify-content:space-between;align-items:center;width:100%">
+    <a class="logo" href="/index.html">akshay@portfolio</a>
+    <nav>
+      <a href="/index.html#about">about</a><a href="/index.html#{{ include.extra_anchor }}">{{ include.extra_label }}</a><a href="/index.html">← back home</a>
+      <a class="resume-btn" href="/assets/akshay_venugopal_cv.pdf" target="_blank" rel="noopener">↓ resume</a>
+    </nav>
+  </div>
+</header>

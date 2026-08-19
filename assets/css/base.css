@@ -1,0 +1,25 @@
+/* Shared base styles — variables, reset and the handful of rules that are
+   byte-identical across index.html, works.html, writing.html and
+   posts/*.html. Linked before each page's own <style> block, so any
+   page-specific override placed after it in the page still wins the
+   cascade (same specificity, later rule wins). Keep this file to only
+   truly shared, low-risk rules — page-specific layout stays inline. */
+
+@import url('https://fonts.googleapis.com/css2?family=Castoro:ital@0;1&family=Public+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root{
+  --c-accent: hsl(12,80%,55%);
+  --c-accent-soft: hsla(12,80%,55%,.12);
+  --c-bg: hsl(96,10%,7%);
+  --c-bg-alt: hsl(96,8%,11%);
+  --c-bg-alt2: hsl(96,8%,14%);
+  --c-line: hsl(96,8%,20%);
+  --c-text: hsl(96,10%,92%);
+  --c-text-soft: hsl(96,6%,62%);
+  --font-display: "Castoro", serif;
+  --font-body: "Public Sans", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+a{color:inherit}

@@ -1,3 +1,5 @@
+---
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,27 +8,11 @@
 <meta name="description" content="My 2 cents on software development: keep it simple — a short post by Akshay Venugopal.">
 <title>My 2 Cents on Software Development: Keep It Simple — Akshay Venugopal</title>
 
-<link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
-<link rel="manifest" href="../site.webmanifest">
+{% include favicon-links.html %}
+<link rel="stylesheet" href="/assets/css/base.css">
 
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Castoro:ital@0;1&family=Public+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
-  :root{
-    --c-accent: hsl(12,80%,55%);
-    --c-bg: hsl(96,10%,7%);
-    --c-bg-alt: hsl(96,8%,11%);
-    --c-line: hsl(96,8%,20%);
-    --c-text: hsl(96,10%,92%);
-    --c-text-soft: hsl(96,6%,62%);
-    --font-display: "Castoro", serif;
-    --font-body: "Public Sans", sans-serif;
-    --font-mono: "JetBrains Mono", monospace;
-  }
-  *{box-sizing:border-box}
   body{margin:0;background:var(--c-bg);color:var(--c-text);font-family:var(--font-body);line-height:1.7}
-  a{color:inherit}
   .wrap{max-width:720px;margin:0 auto;padding:0 24px}
   .status-bar{background:var(--c-accent);color:#150c08;text-align:center;font-size:12px;padding:9px 16px;font-family:var(--font-mono);font-weight:700}
   .status-bar a{color:#150c08;text-decoration:underline}
@@ -51,12 +37,9 @@
 </head>
 <body>
 
-<div class="status-bar">👋 Software Engineer · 10+ yrs · Kochi, India · <a href="../index.html#contact">open to interesting problems — let's talk</a></div>
+{% include status-bar.html contact_href="/index.html#contact" %}
 
-<header>
-  <a class="logo" href="../index.html">akshay@portfolio</a>
-  <nav><a href="../writing.html">← all writing</a></nav>
-</header>
+{% include post-header.html %}
 
 <div class="wrap">
   <div class="post-head">
@@ -77,10 +60,7 @@
     <p>So that's my two cents: when in doubt, ship the simple version. You can always add complexity later, once you've earned it with a real requirement. It's a lot harder to remove complexity once it's load-bearing.</p>
   </article>
 
-  <footer>
-    <div>© Akshay Venugopal — 2026</div>
-    <a href="../writing.html">← Back to all writing</a>
-  </footer>
+  {% include footer-back.html href="/writing.html" text="← Back to all writing" %}
 </div>
 
 </body>

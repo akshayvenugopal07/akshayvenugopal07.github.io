@@ -1,2 +1,5 @@
 .DS_Store
 _to_delete/
+_site/
+.jekyll-cache/
+.jekyll-metadata

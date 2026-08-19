@@ -1,3 +1,5 @@
+---
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,29 +8,11 @@
 <meta name="description" content="Full project archive — Akshay Venugopal, Software Engineer.">
 <title>Works Archive — Akshay Venugopal</title>
 
-<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-<link rel="manifest" href="site.webmanifest">
+{% include favicon-links.html %}
+<link rel="stylesheet" href="/assets/css/base.css">
 
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Castoro:ital@0;1&family=Public+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
-  :root{
-    --c-accent: hsl(12,80%,55%);
-    --c-accent-soft: hsla(12,80%,55%,.12);
-    --c-bg: hsl(96,10%,7%);
-    --c-bg-alt: hsl(96,8%,11%);
-    --c-line: hsl(96,8%,20%);
-    --c-text: hsl(96,10%,92%);
-    --c-text-soft: hsl(96,6%,62%);
-    --font-display: "Castoro", serif;
-    --font-body: "Public Sans", sans-serif;
-    --font-mono: "JetBrains Mono", monospace;
-  }
-  *{box-sizing:border-box}
-  html{scroll-behavior:smooth}
   body{margin:0;background:var(--c-bg);color:var(--c-text);font-family:var(--font-body);line-height:1.6}
-  a{color:inherit}
   .wrap{max-width:1100px;margin:0 auto;padding:0 24px}
   .status-bar{background:var(--c-accent);color:#150c08;text-align:center;font-size:12px;padding:9px 16px;font-family:var(--font-mono);font-weight:700}
   .status-bar a{color:#150c08;text-decoration:underline}
@@ -65,17 +49,9 @@
 </head>
 <body>
 
-<div class="status-bar">👋 Software Engineer · 10+ yrs · Kochi, India · <a href="index.html#contact">open to interesting problems — let's talk</a></div>
+{% include status-bar.html contact_href="/index.html#contact" %}
 
-<header>
-  <div class="wrap" style="display:flex;justify-content:space-between;align-items:center;width:100%">
-    <a class="logo" href="index.html">akshay@portfolio</a>
-    <nav>
-      <a href="index.html#about">about</a><a href="index.html#experience">experience</a><a href="index.html">← back home</a>
-      <a class="resume-btn" href="assets/akshay_venugopal_cv.pdf" target="_blank" rel="noopener">↓ resume</a>
-    </nav>
-  </div>
-</header>
+{% include subpage-header.html extra_anchor="experience" extra_label="experience" %}
 
 <div class="wrap">
   <div class="page-head">
@@ -153,10 +129,7 @@
     </div>
   </div>
 
-  <footer>
-    <div>© Akshay Venugopal — 2026</div>
-    <a href="index.html">← Back to homepage</a>
-  </footer>
+  {% include footer-back.html href="/index.html" text="← Back to homepage" %}
 </div>
 
 </body>
