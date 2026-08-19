@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Writing archive — Akshay Venugopal, Software Engineer.">
+<title>Writing — Akshay Venugopal</title>
+
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="manifest" href="site.webmanifest">
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Castoro:ital@0;1&family=Public+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+  :root{
+    --c-accent: hsl(12,80%,55%);
+    --c-bg: hsl(96,10%,7%);
+    --c-bg-alt: hsl(96,8%,11%);
+    --c-line: hsl(96,8%,20%);
+    --c-text: hsl(96,10%,92%);
+    --c-text-soft: hsl(96,6%,62%);
+    --font-display: "Castoro", serif;
+    --font-body: "Public Sans", sans-serif;
+    --font-mono: "JetBrains Mono", monospace;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--c-bg);color:var(--c-text);font-family:var(--font-body);line-height:1.6}
+  a{color:inherit}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 24px}
+  .status-bar{background:var(--c-accent);color:#150c08;text-align:center;font-size:12px;padding:9px 16px;font-family:var(--font-mono);font-weight:700}
+  .status-bar a{color:#150c08;text-decoration:underline}
+  header{display:flex;justify-content:space-between;align-items:center;padding:20px 0;border-bottom:1px solid var(--c-line)}
+  .logo{font-family:var(--font-mono);font-weight:700;color:var(--c-accent);font-size:15px;text-decoration:none}
+  .logo::before{content:"> "}
+  nav a{color:var(--c-text-soft);text-decoration:none;margin-left:22px;font-size:13px;font-family:var(--font-mono);font-weight:600}
+  nav a:hover{color:var(--c-accent)}
+  .resume-btn{background:var(--c-accent);color:#150c08 !important;padding:8px 14px;font-weight:700}
+
+  .page-head{padding:48px 0 32px}
+  .page-head .num{font-family:var(--font-mono);color:var(--c-accent);font-size:13px;font-weight:700;display:block;margin-bottom:10px}
+  .page-head h1{font-family:var(--font-display);font-size:clamp(28px,4.5vw,42px);font-weight:400;margin:0 0 12px}
+  .page-head p{color:var(--c-text-soft);font-size:14px;max-width:640px}
+
+  .feed{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;padding-bottom:64px}
+  .post{background:var(--c-bg-alt);border:1px solid var(--c-line);border-radius:6px;padding:20px;transition:.2s ease;text-decoration:none;display:block}
+  .post:hover{border-color:var(--c-accent);box-shadow:0 0 0 1px var(--c-accent), 0 0 24px -4px hsla(12,80%,55%,.5)}
+  .post .src{font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--c-accent);font-weight:700;margin-bottom:8px}
+  .post h4{margin:0 0 8px;font-size:15px;color:var(--c-text)}
+  .post p{color:var(--c-text-soft);font-size:12.5px;margin:0}
+
+  footer{padding:26px 0;color:var(--c-text-soft);font-size:12px;display:flex;justify-content:space-between;font-family:var(--font-mono);border-top:1px solid var(--c-line);flex-wrap:wrap;gap:10px}
+  footer a{color:var(--c-accent);text-decoration:none}
+
+  @media (max-width: 860px){ .feed{grid-template-columns:1fr} nav{display:none} }
+</style>
+</head>
+<body>
+
+<div class="status-bar">👋 Software Engineer · 10+ yrs · Bengaluru, India · <a href="index.html#contact">open to interesting problems — let's talk</a></div>
+
+<header>
+  <div class="wrap" style="display:flex;justify-content:space-between;align-items:center;width:100%">
+    <a class="logo" href="index.html">akshay@portfolio</a>
+    <nav>
+      <a href="index.html#about">about</a><a href="index.html#works">works</a><a href="index.html">← back home</a>
+      <a class="resume-btn" href="assets/akshay_venugopal_cv.pdf" target="_blank" rel="noopener">↓ resume</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="page-head">
+    <span class="num">[05] ARCHIVE</span>
+    <h1>Writing &amp; Posts</h1>
+    <p>Everything I've written, whether it lives here or out on Medium/LinkedIn — newest first.</p>
+  </div>
+
+  <div class="feed">
+    <a class="post" href="posts/keep-it-simple.html">
+      <div class="src">On this site</div>
+      <h4>My 2 Cents on Software Development: Keep It Simple</h4>
+      <p>A short native post on why the boring, simple solution usually beats the clever one — written and hosted right here.</p>
+    </a>
+    <a class="post" href="https://medium.com/@akshay.venugopal_8836/detection-of-payment-apps-from-web-f8fdbd229cf4" target="_blank" rel="noopener">
+      <div class="src">Medium</div>
+      <h4>Detection of Payment Apps from Web</h4>
+      <p>A walkthrough of detecting installed payment apps on Android from a browser context — the technique that later caught NPCI's attention.</p>
+    </a>
+    <a class="post" href="https://www.linkedin.com/posts/akshayvenugopal_nodejs-project-angular-ugcPost-6700396942834458625-2RoD/?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAABEn99oBoviMtqZf681NYbnLdBvRas_I5U4" target="_blank" rel="noopener">
+      <div class="src">LinkedIn</div>
+      <h4>Nearby Location Detection</h4>
+      <p>A sample project finding location points nearby using Angular and NodeJS — one of my early public write-ups.</p>
+    </a>
+  </div>
+
+  <footer>
+    <div>© Akshay Venugopal — 2026</div>
+    <a href="index.html">← Back to homepage</a>
+  </footer>
+</div>
+
+</body>
+</html>

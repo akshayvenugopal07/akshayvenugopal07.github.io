@@ -140,8 +140,15 @@
   .contact-links a{text-decoration:none;border-bottom:1px solid var(--c-line)}
   .contact-links a:hover{border-color:var(--c-accent);color:var(--c-accent)}
 
-  /* WRITING placeholder */
+  /* WRITING */
   .writing-empty{border:1px dashed var(--c-line);border-radius:6px;padding:28px;color:var(--c-text-soft);font-size:14px}
+  .feed{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .post{background:var(--c-bg-alt);border:1px solid var(--c-line);border-radius:6px;padding:18px;transition:.2s ease;text-decoration:none;display:block}
+  .post:hover{border-color:var(--c-accent);box-shadow:0 0 0 1px var(--c-accent), 0 0 24px -4px hsla(12,80%,55%,.5)}
+  .post .src{font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--c-accent);font-weight:700;margin-bottom:8px}
+  .post h4{margin:0 0 8px;font-size:15px;color:var(--c-text)}
+  .post p{color:var(--c-text-soft);font-size:12.5px;margin:0}
+  @media (max-width: 860px){ .feed{grid-template-columns:1fr} }
 
   footer{padding:26px 0;color:var(--c-text-soft);font-size:12px;display:flex;justify-content:space-between;font-family:var(--font-mono);flex-wrap:wrap;gap:10px;align-items:center}
   .social-list{display:flex;gap:14px;list-style:none;padding:0;margin:0}
@@ -324,7 +331,26 @@
 
   <section id="writing">
     <div class="section-header"><span class="num">[05]</span><h2>Writing &amp; Posts</h2></div>
-    <div class="writing-empty">No posts yet — this section is wired up and ready to go. Send over the LinkedIn/Medium posts (or native write-ups) you'd like featured here and they'll show up as cards, with a full archive page alongside this one.</div>
+    <div class="feed">
+      <a class="post" href="https://medium.com/@akshay.venugopal_8836/detection-of-payment-apps-from-web-f8fdbd229cf4" target="_blank" rel="noopener">
+        <div class="src">Medium</div>
+        <h4>Detection of Payment Apps from Web</h4>
+        <p>A walkthrough of detecting installed payment apps on Android from a browser context — the technique that later caught NPCI's attention.</p>
+      </a>
+      <a class="post" href="https://www.linkedin.com/posts/akshayvenugopal_nodejs-project-angular-ugcPost-6700396942834458625-2RoD/?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAABEn99oBoviMtqZf681NYbnLdBvRas_I5U4" target="_blank" rel="noopener">
+        <div class="src">LinkedIn</div>
+        <h4>Nearby Location Detection</h4>
+        <p>A sample project finding location points nearby using Angular and NodeJS — one of my early public write-ups.</p>
+      </a>
+      <a class="post" href="posts/keep-it-simple.html">
+        <div class="src">On this site</div>
+        <h4>My 2 Cents on Software Development: Keep It Simple</h4>
+        <p>A short native post on why the boring, simple solution usually beats the clever one — written and hosted right here.</p>
+      </a>
+    </div>
+    <div class="more-note">
+      <a href="writing.html">View all posts in the archive →</a>
+    </div>
   </section>
 
   <section id="contact">
@@ -343,7 +369,7 @@
     <ul class="social-list">
       <li><a href="https://in.linkedin.com/in/akshayvenugopal" target="_blank" rel="noopener">LinkedIn</a></li>
       <li><a href="https://github.com/akshayvenugopal07" target="_blank" rel="noopener">GitHub</a></li>
-      <li><a href="https://twitter.com/Akshay_2574" target="_blank" rel="noopener">Twitter</a></li>
+      <li><a href="https://stackoverflow.com/users/6756072/akshay-venugopal" target="_blank" rel="noopener">Stack Overflow</a></li>
       <li><a href="https://www.instagram.com/akshayvenugopal007" target="_blank" rel="noopener">Instagram</a></li>
     </ul>
     <div>console.log("thanks for visiting")</div>
