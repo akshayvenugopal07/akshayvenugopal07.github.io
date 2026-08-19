@@ -66,6 +66,18 @@
   .hero h1 span{color:var(--c-accent)}
   .hero p{max-width:560px;color:var(--c-text-soft);font-size:15px;margin-bottom:26px}
   .hero-meta{font-family:var(--font-mono);font-size:12.5px;color:var(--c-accent);font-weight:600;margin:0 0 18px}
+  .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center}
+  .hero-photo{display:flex;justify-content:center}
+  .photo-frame{width:100%;max-width:340px;background:var(--c-bg-alt);border:1px solid var(--c-line);border-radius:8px;overflow:hidden;box-shadow:0 20px 50px -20px rgba(0,0,0,.6)}
+  .photo-bar{background:var(--c-bg-alt2);padding:8px 12px;display:flex;align-items:center;gap:6px;border-bottom:1px solid var(--c-line)}
+  .photo-bar .dot{width:9px;height:9px;border-radius:50%}
+  .photo-bar span{font-family:var(--font-mono);font-size:11px;color:var(--c-text-soft);margin-left:8px}
+  .photo-frame img{width:100%;height:auto;display:block;filter:grayscale(.15) contrast(1.03)}
+  @media (max-width: 860px){
+    .hero-grid{grid-template-columns:1fr}
+    .hero-photo{order:-1;margin-bottom:8px}
+    .photo-frame{max-width:280px}
+  }
   .btns{display:flex;flex-wrap:wrap;gap:12px}
   .btns a{display:inline-block;padding:12px 20px;font-weight:700;font-size:13px;text-decoration:none;font-family:var(--font-mono)}
   .btn-primary{background:var(--c-accent);color:#150c08}
@@ -201,14 +213,24 @@
 <div class="wrap">
 
   <section class="hero">
-    <div class="prompt">$ whoami<span class="cursor"></span></div>
-    <h1>Ten years building products —<br><span>not just tickets.</span></h1>
-    <div class="hero-meta">Software Engineer · Payments · Design Tools · Healthcare — and I still like it.</div>
-    <p>I've spent the last ten years building software people depend on without thinking about it — payment flows, Canva-like design tools, healthcare dashboards, mostly the kind where a bug means someone's payment fails or an export breaks. I care more about the boring, correct fix than the clever one, and about builds that stay fast as a codebase grows.</p>
-    <div class="btns">
-      <a class="btn-primary" href="assets/akshay_venugopal_cv.pdf" target="_blank" rel="noopener">↓ Download Resume</a>
-      <a class="btn-stroke" href="#works">See selected works</a>
-      <a class="btn-stroke" href="#contact">Get in touch</a>
+    <div class="hero-grid">
+      <div class="hero-text">
+        <div class="prompt">$ whoami<span class="cursor"></span></div>
+        <h1>I'm <span>Akshay Venugopal</span>, a software engineer —<br>ten years building products, not just tickets.</h1>
+        <div class="hero-meta">Payments · Design Tools · Healthcare — and I still like it.</div>
+        <p>I've spent the last ten years building software people depend on without thinking about it — payment flows, Canva-like design tools, healthcare dashboards, mostly the kind where a bug means someone's payment fails or an export breaks. I care more about the boring, correct fix than the clever one, and about builds that stay fast as a codebase grows.</p>
+        <div class="btns">
+          <a class="btn-primary" href="assets/akshay_venugopal_cv.pdf" target="_blank" rel="noopener">↓ Download Resume</a>
+          <a class="btn-stroke" href="#works">See selected works</a>
+          <a class="btn-stroke" href="#contact">Get in touch</a>
+        </div>
+      </div>
+      <div class="hero-photo">
+        <div class="photo-frame">
+          <div class="photo-bar"><div class="dot" style="background:#e05a2b"></div><div class="dot" style="background:#e0b02b"></div><div class="dot" style="background:#2be07a"></div><span>akshay.jpg</span></div>
+          <img src="images/akshay-photo.jpg" alt="Akshay Venugopal" width="900" height="1200" loading="eager">
+        </div>
+      </div>
     </div>
   </section>
 
@@ -435,7 +457,8 @@
   responses['experience'] = "HighLevel (Lead Eng) . Simpl (Staff SWE) . KeyValue Systems (Sr SWE) . Cabot (SWE L2)";
   responses['skills'] = "JS/TS/Python . React/Angular/Svelte/Vue . Node . AWS/GCP/Docker . RAG/Claude API/MCP";
   responses['awards'] = "Simpl Best Performer 23 . Simpl Hackathon Winner 23 . Cabot Best Performer 18-19";
-  responses['contact'] = "akshayvenugopal007@gmail.com . +91 94465 14810";
+  // 'contact' is handled separately below so the email/phone render as real,
+  // clickable mailto:/tel: links instead of plain text.
   responses['projects'] = "type: window.location or click 'View all 11 projects' below the Works section.";
   responses['sudo make-coffee'] = "sudo: make-coffee: permission denied — I only ship code, not coffee.";
 
@@ -444,7 +467,32 @@
     l.className = 'line' + (cls ? ' ' + cls : '');
     l.textContent = text; // textContent only — never innerHTML
     body.insertBefore(l, body.lastElementChild);
-    // cap scrollback so the DOM can't be grown unbounded
+    capScrollback();
+  }
+
+  // Builds the 'contact' response with real mailto:/tel: links, using only
+  // createElement + textContent (never innerHTML) and only these two fixed,
+  // hard-coded hrefs — nothing derived from user input ever reaches this.
+  function printContactLine(){
+    var l = document.createElement('div');
+    l.className = 'line hint';
+    var mail = document.createElement('a');
+    mail.href = 'mailto:akshayvenugopal007@gmail.com';
+    mail.className = 'accent';
+    mail.textContent = 'akshayvenugopal007@gmail.com';
+    var sep = document.createTextNode(' . ');
+    var tel = document.createElement('a');
+    tel.href = 'tel:+919446514810';
+    tel.className = 'accent';
+    tel.textContent = '+91 94465 14810';
+    l.appendChild(mail);
+    l.appendChild(sep);
+    l.appendChild(tel);
+    body.insertBefore(l, body.lastElementChild);
+    capScrollback();
+  }
+
+  function capScrollback(){
     var lines = body.querySelectorAll('.line');
     if (lines.length > MAX_HISTORY) lines[0].remove();
   }
@@ -462,7 +510,9 @@
       body.scrollTop = body.scrollHeight;
       return;
     }
-    if (Object.prototype.hasOwnProperty.call(responses, val)) {
+    if (val === 'contact') {
+      printContactLine();
+    } else if (Object.prototype.hasOwnProperty.call(responses, val)) {
       printLine(responses[val], 'hint');
     } else {
       printLine("command not found: '" + val + "' — try 'help'", 'hint');
