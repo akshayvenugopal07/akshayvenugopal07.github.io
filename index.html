@@ -1,713 +1,467 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js">
-
+<html lang="en">
 <head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Akshay Venugopal — Software Engineer, 10 years fullstack. Payments, credentialing and healthcare products across React, Svelte, Vue and Node.">
+<title>Akshay Venugopal — Software Engineer</title>
 
-    <!--- basic page needs
-    ================================================== -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Akshay Venugopal</title>
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="manifest" href="site.webmanifest">
 
-    <script>
-        document.documentElement.classList.remove('no-js');
-        document.documentElement.classList.add('js');
-    </script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Castoro:ital@0;1&family=Public+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 
-    <!-- CSS
-    ================================================== -->
-    <link rel="stylesheet" href="css/vendor.css">
-    <link rel="stylesheet" href="css/styles.css">
+  :root{
+    --c-accent: hsl(12,80%,55%);
+    --c-accent-soft: hsla(12,80%,55%,.12);
+    --c-bg: hsl(96,10%,7%);
+    --c-bg-alt: hsl(96,8%,11%);
+    --c-bg-alt2: hsl(96,8%,14%);
+    --c-line: hsl(96,8%,20%);
+    --c-text: hsl(96,10%,92%);
+    --c-text-soft: hsl(96,6%,62%);
+    --font-display: "Castoro", serif;
+    --font-body: "Public Sans", sans-serif;
+    --font-mono: "JetBrains Mono", monospace;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--c-bg);color:var(--c-text);font-family:var(--font-body);line-height:1.6;position:relative}
+  body::after{content:"";position:fixed;inset:0;pointer-events:none;
+    background:repeating-linear-gradient(0deg,rgba(255,255,255,.02) 0px,rgba(255,255,255,.02) 1px,transparent 1px,transparent 3px);
+    mix-blend-mode:overlay;z-index:5}
+  a{color:inherit}
+  img{max-width:100%;display:block}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 24px}
 
-    <!-- favicons
-    ================================================== -->
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-    <link rel="manifest" href="site.webmanifest">
+  /* PERSISTENT STATUS BANNER */
+  .status-bar{background:var(--c-accent);color:#150c08;text-align:center;font-size:12px;padding:9px 16px;font-family:var(--font-mono);font-weight:700;
+    position:sticky;top:0;z-index:60;letter-spacing:.02em}
+  .status-bar a{color:#150c08;text-decoration:underline}
 
+  /* HEADER */
+  header{display:flex;justify-content:space-between;align-items:center;padding:20px 0;border-bottom:1px solid var(--c-line);position:sticky;top:34px;background:var(--c-bg);z-index:40}
+  .logo{font-family:var(--font-mono);font-weight:700;color:var(--c-accent);font-size:15px;text-decoration:none}
+  .logo::before{content:"> "}
+  nav{display:flex;align-items:center}
+  nav a{color:var(--c-text-soft);text-decoration:none;margin-left:24px;font-size:13px;font-family:var(--font-mono);font-weight:600}
+  nav a:hover{color:var(--c-accent)}
+  .resume-btn{background:var(--c-accent);color:#150c08 !important;padding:8px 14px;font-weight:700}
+  .menu-toggle{display:none;background:none;border:1px solid var(--c-line);color:var(--c-text);font-family:var(--font-mono);padding:8px 10px;cursor:pointer}
+
+  section{padding:56px 0;border-top:1px solid var(--c-line)}
+  .section-header{display:flex;align-items:baseline;gap:14px;margin-bottom:32px;font-family:var(--font-mono)}
+  .section-header .num{color:var(--c-accent);font-size:13px;font-weight:700}
+  .section-header h2{font-family:var(--font-display);font-size:28px;font-weight:400;margin:0;color:var(--c-text)}
+
+  /* HERO */
+  .hero{padding:56px 0 64px;border-top:none}
+  .prompt{font-family:var(--font-mono);color:var(--c-accent);font-size:13px;margin-bottom:16px}
+  .prompt .cursor{display:inline-block;width:8px;height:16px;background:var(--c-accent);margin-left:2px;animation:blink 1s step-end infinite;vertical-align:middle}
+  @keyframes blink{50%{opacity:0}}
+  .hero h1{font-family:var(--font-display);font-size:clamp(30px,5vw,50px);line-height:1.18;margin:0 0 16px;font-weight:400}
+  .hero h1 span{color:var(--c-accent)}
+  .hero p{max-width:560px;color:var(--c-text-soft);font-size:15px;margin-bottom:26px}
+  .btns{display:flex;flex-wrap:wrap;gap:12px}
+  .btns a{display:inline-block;padding:12px 20px;font-weight:700;font-size:13px;text-decoration:none;font-family:var(--font-mono)}
+  .btn-primary{background:var(--c-accent);color:#150c08}
+  .btn-stroke{border:1.5px solid var(--c-line);color:var(--c-text)}
+
+  /* HUD STATS STRIP */
+  .stats-strip{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--c-line);background:var(--c-bg-alt);border-radius:4px;overflow:hidden}
+  .stats-strip .stat{padding:20px 16px;text-align:center;border-right:1px solid var(--c-line)}
+  .stats-strip .stat:last-child{border-right:none}
+  .stats-strip .stat .n{font-family:var(--font-mono);font-size:26px;font-weight:700;color:var(--c-accent)}
+  .stats-strip .stat .l{font-size:11px;color:var(--c-text-soft);text-transform:uppercase;letter-spacing:.06em;margin-top:4px}
+
+  /* ABOUT / SKILLS */
+  .about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:36px;margin-bottom:40px}
+  .about-grid p{color:var(--c-text-soft);font-size:15px}
+  .skill-group{margin-bottom:18px}
+  .skill-group h5{font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--c-accent);margin:0 0 10px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{font-family:var(--font-mono);font-size:11px;border:1px solid var(--c-line);padding:5px 10px;border-radius:3px;color:var(--c-text-soft)}
+
+  /* EXPERIENCE TIMELINE */
+  .timeline{border-left:2px solid var(--c-line);padding-left:26px;margin-left:6px}
+  .job{position:relative;padding-bottom:36px}
+  .job:last-child{padding-bottom:0}
+  .job::before{content:"";position:absolute;left:-32px;top:4px;width:11px;height:11px;border-radius:50%;background:var(--c-accent);box-shadow:0 0 0 4px var(--c-bg)}
+  .job .role{font-family:var(--font-mono);font-weight:700;font-size:15px}
+  .job .co{color:var(--c-accent);font-weight:700}
+  .job .dates{font-family:var(--font-mono);font-size:11px;color:var(--c-text-soft);margin:2px 0 10px}
+  .job ul{margin:0;padding-left:18px;color:var(--c-text-soft);font-size:13.5px}
+  .job ul li{margin-bottom:6px}
+  .job .stack{margin-top:10px;font-family:var(--font-mono);font-size:11px;color:var(--c-text-soft)}
+  .job .stack b{color:var(--c-text)}
+
+  /* AWARDS */
+  .awards{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+  .award{display:flex;gap:12px;align-items:flex-start;background:var(--c-bg-alt);border:1px solid var(--c-line);padding:14px 16px;border-radius:4px}
+  .award .medal{font-size:20px}
+  .award strong{display:block;font-size:13.5px}
+  .award span{font-family:var(--font-mono);font-size:11px;color:var(--c-text-soft)}
+
+  /* WORKS */
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .card{background:var(--c-bg-alt);border:1px solid var(--c-line);overflow:hidden;transition:.2s ease}
+  .card:hover{border-color:var(--c-accent);box-shadow:0 0 0 1px var(--c-accent), 0 0 24px -4px hsla(12,80%,55%,.5)}
+  .card .thumb{height:110px;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:11px;color:hsla(0,0%,100%,.65);position:relative;letter-spacing:.05em}
+  .card .body{padding:16px}
+  .card h4{margin:0 0 4px;font-size:15px;font-family:var(--font-mono)}
+  .card .tag{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--c-text-soft)}
+  .card p{font-size:12.5px;color:var(--c-text-soft);margin:8px 0 0}
+  .more-note{margin-top:18px;font-family:var(--font-mono);font-size:13px;color:var(--c-text-soft);display:flex;gap:18px;flex-wrap:wrap;align-items:center}
+  .more-note a{color:var(--c-accent);text-decoration:none;border-bottom:1px solid var(--c-accent)}
+
+  /* TERMINAL */
+  .terminal{background:#0b0f0c;border:1px solid var(--c-line);border-radius:6px;overflow:hidden;box-shadow:0 20px 50px -20px rgba(0,0,0,.6)}
+  .terminal .tbar{background:var(--c-bg-alt2);padding:8px 12px;display:flex;align-items:center;gap:6px;border-bottom:1px solid var(--c-line)}
+  .terminal .dot{width:10px;height:10px;border-radius:50%}
+  .terminal .tbar span{font-family:var(--font-mono);font-size:11px;color:var(--c-text-soft);margin-left:8px}
+  .terminal .tbody{padding:16px;font-family:var(--font-mono);font-size:13px;height:280px;overflow-y:auto}
+  .terminal .line{margin-bottom:6px;white-space:pre-wrap;word-break:break-word}
+  .terminal .prompt-line{display:flex;gap:8px}
+  .terminal .prompt-line .p{color:var(--c-accent)}
+  .terminal input{background:none;border:none;outline:none;color:var(--c-text);font-family:var(--font-mono);font-size:13px;flex:1;min-width:0}
+  .terminal .hint{color:var(--c-text-soft)}
+  .terminal .accent{color:var(--c-accent)}
+  .terminal-note{font-size:13px;color:var(--c-text-soft);margin-bottom:16px}
+  .konami-banner{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(120%);background:var(--c-accent);color:#150c08;
+    padding:12px 22px;border-radius:6px;font-family:var(--font-mono);font-weight:700;font-size:13px;transition:transform .35s ease;z-index:80}
+  .konami-banner.show{transform:translateX(-50%) translateY(0)}
+
+  /* CONTACT */
+  .contact-box{background:var(--c-bg-alt);border:1px solid var(--c-line);padding:34px;font-family:var(--font-mono);display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between}
+  .contact-links{display:flex;flex-direction:column;gap:8px;font-size:14px}
+  .contact-links a{text-decoration:none;border-bottom:1px solid var(--c-line)}
+  .contact-links a:hover{border-color:var(--c-accent);color:var(--c-accent)}
+
+  /* WRITING placeholder */
+  .writing-empty{border:1px dashed var(--c-line);border-radius:6px;padding:28px;color:var(--c-text-soft);font-size:14px}
+
+  footer{padding:26px 0;color:var(--c-text-soft);font-size:12px;display:flex;justify-content:space-between;font-family:var(--font-mono);flex-wrap:wrap;gap:10px;align-items:center}
+  .social-list{display:flex;gap:14px;list-style:none;padding:0;margin:0}
+  .social-list a{color:var(--c-text-soft);text-decoration:none;font-size:12px}
+  .social-list a:hover{color:var(--c-accent)}
+  .note{background:var(--c-accent-soft);border:1px dashed var(--c-accent);padding:12px 16px;font-size:12.5px;margin:0 0 20px;font-family:var(--font-body);color:var(--c-text-soft);border-radius:4px}
+  .go-top{position:fixed;bottom:20px;right:20px;background:var(--c-bg-alt);border:1px solid var(--c-line);color:var(--c-text);
+    width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;
+    font-family:var(--font-mono);opacity:0;pointer-events:none;transition:opacity .2s ease;z-index:45}
+  .go-top.show{opacity:1;pointer-events:auto}
+
+  @media (max-width: 860px){
+    header{top:0}
+    .status-bar{position:static}
+    .about-grid{grid-template-columns:1fr}
+    .grid{grid-template-columns:repeat(2,1fr)}
+    .stats-strip{grid-template-columns:repeat(2,1fr)}
+    .stats-strip .stat:nth-child(2){border-right:none}
+  }
+  @media (max-width: 620px){
+    nav{position:fixed;top:56px;left:0;right:0;background:var(--c-bg);border-bottom:1px solid var(--c-line);
+      flex-direction:column;align-items:flex-start;padding:16px 24px;display:none;gap:4px;max-height:calc(100vh - 56px);overflow-y:auto}
+    nav.open{display:flex}
+    nav a{margin:8px 0}
+    .menu-toggle{display:block}
+    .grid{grid-template-columns:1fr}
+    .awards{grid-template-columns:1fr}
+    .stats-strip{grid-template-columns:1fr 1fr}
+    .contact-box{flex-direction:column;align-items:flex-start}
+  }
+</style>
 </head>
+<body>
 
+<div class="status-bar">👋 Software Engineer · 10+ yrs · Bengaluru, India · <a href="#contact">open to interesting problems — let's talk</a></div>
 
-<body id="top">
+<header id="siteHeader">
+  <div class="wrap" style="display:flex;justify-content:space-between;align-items:center;width:100%">
+    <a class="logo" href="#top">akshay@portfolio</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">menu</button>
+    <nav id="mainNav">
+      <a href="#about">about</a><a href="#experience">experience</a><a href="#works">works</a><a href="#writing">writing</a><a href="#contact">contact</a>
+      <a class="resume-btn" href="assets/akshay_venugopal_cv.pdf" target="_blank" rel="noopener">↓ resume</a>
+    </nav>
+  </div>
+</header>
 
+<div id="top"></div>
+<div class="wrap">
 
-    <!-- preloader
-    ================================================== -->
-    <div id="preloader">
-        <div id="loader" class="dots-fade">
-            <div></div>
-            <div></div>
-            <div></div>
+  <section class="hero">
+    <div class="prompt">$ whoami<span class="cursor"></span></div>
+    <h1>Akshay Venugopal —<br><span>software engineer,</span><br>10 years, fullstack.</h1>
+    <p>I've spent the last decade shipping payments, credentialing, and healthcare products end to end — from React/Svelte/Vue frontends down to Node/Postgres backends. I read a system the way I'd read a game's mechanics: find how it actually works, then find the fastest clean path through it.</p>
+    <div class="btns">
+      <a class="btn-primary" href="assets/akshay_venugopal_cv.pdf" target="_blank" rel="noopener">↓ Download Resume</a>
+      <a class="btn-stroke" href="#works">See selected works</a>
+      <a class="btn-stroke" href="#contact">Get in touch</a>
+    </div>
+  </section>
+
+  <section style="padding-top:0;border-top:none">
+    <div class="stats-strip">
+      <div class="stat"><div class="n" data-target="10">0</div><div class="l">Years Experience</div></div>
+      <div class="stat"><div class="n" data-target="4">0</div><div class="l">Companies</div></div>
+      <div class="stat"><div class="n" data-target="15" data-suffix="+">0</div><div class="l">Products Shipped</div></div>
+      <div class="stat"><div class="n" data-target="5">0</div><div class="l">Awards &amp; Honors</div></div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="section-header"><span class="num">[01]</span><h2>About</h2></div>
+    <div class="about-grid">
+      <div>
+        <p>Currently a Lead Engineer at HighLevel, working on the credentials/certificate builder platform — layer-based error flagging, an AI template generator, and a signature capture system used across hundreds of locations. Before that, I led the payments team at Simpl, took payment success rates from 81% to 87%, and built a method to detect installed payment apps via the web that got NPCI's attention.</p>
+        <p>Earlier roles at KeyValue Systems and Cabot covered everything from a WebRTC-based dental-imaging tool to healthcare, tourism and e-governance platforms across Angular, React and Node. I care about clean UI, fast builds, and finding the boring-but-correct fix for gnarly production bugs.</p>
+      </div>
+      <div>
+        <div class="skill-group">
+          <h5>Programming</h5>
+          <div class="chips"><span class="chip">JavaScript</span><span class="chip">TypeScript</span><span class="chip">Python</span><span class="chip">Shell</span></div>
         </div>
+        <div class="skill-group">
+          <h5>Frameworks / Libraries</h5>
+          <div class="chips"><span class="chip">React</span><span class="chip">Angular</span><span class="chip">Svelte</span><span class="chip">Vue</span><span class="chip">Next.js</span><span class="chip">Node.js</span><span class="chip">D3</span></div>
+        </div>
+        <div class="skill-group">
+          <h5>AI &amp; Agentic Engineering</h5>
+          <div class="chips"><span class="chip">RAG Pipelines</span><span class="chip">Claude API</span><span class="chip">OpenAI API</span><span class="chip">MCP</span><span class="chip">Claude Code</span></div>
+        </div>
+        <div class="skill-group">
+          <h5>Tools / Platforms</h5>
+          <div class="chips"><span class="chip">AWS</span><span class="chip">Docker</span><span class="chip">GCP</span><span class="chip">Postgres</span><span class="chip">MongoDB</span><span class="chip">Figma</span></div>
+        </div>
+      </div>
     </div>
 
-
-    <!-- page wrap
-    ================================================== -->
-    <div id="page" class="s-pagewrap">
-
-
-        <!-- # site header 
-        ================================================== -->
-        <header class="s-header">
-            <div class="row s-header__inner">
-
-                <div class="s-header__block">
-                    <div class="s-header__logo">
-                        <a class="logo" href="index.html">
-                            <img src="images/logo.svg" alt="Homepage">
-                        </a>
-                    </div>
-
-                    <a class="s-header__menu-toggle" href="#0"><span>Menu</span></a>
-                </div> <!-- end s-header__block -->
-
-                <nav class="s-header__nav">
-                    <ul class="s-header__menu-links">
-                        <li class="current"><a class="smoothscroll" href="#intro">Intro</a></li>
-                        <li><a class="smoothscroll" href="#about">About</a></li>
-                        <li><a class="smoothscroll" href="#works">Works</a></li>
-                        <li><a class="smoothscroll" href="#footer">Contact</a></li>
-                    </ul> <!-- s-header__menu-links -->
-                </nav> <!-- end s-header__nav -->
-
-            </div> <!-- end s-header__inner -->
-        </header> <!-- end s-header -->
-
-
-        <!-- # intro
-        ================================================== -->
-        <section id="intro" class="s-intro target-section">
-
-            <div class="row s-intro__content width-sixteen-col">
-                <div class="column lg-12 s-intro__content-inner grid-block grid-16">
-
-                    <div class="s-intro__content-text">
-
-                        <div class="s-intro__content-pretitle text-pretitle">Hello</div>
-                        <h1 class="s-intro__content-title">
-                            I'm Akshay Venugopal <br>
-                            a software engineer <br>
-                            based in India.
-                        </h1>
-
-                        <div class="s-intro__content-btns">
-                            <a class="smoothscroll btn" href="#about">More About Me</a>
-                            <a class="smoothscroll btn btn--stroke" href="#footer">Get In Touch</a>
-                        </div> <!-- s-intro__content-btns -->
-
-                    </div> <!-- s-intro__content-text -->
-
-                </div> <!-- s-intro__content-inner -->
-            </div> <!-- s-intro__content -->
-
-            <ul class="s-intro__social social-list">
-                <li>
-                    <a href="https://www.facebook.com/akshay.venugopal.50">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                            style="fill:rgba(0, 0, 0, 1);transform:;-ms-filter:">
-                            <path
-                                d="M20,3H4C3.447,3,3,3.448,3,4v16c0,0.552,0.447,1,1,1h8.615v-6.96h-2.338v-2.725h2.338v-2c0-2.325,1.42-3.592,3.5-3.592 c0.699-0.002,1.399,0.034,2.095,0.107v2.42h-1.435c-1.128,0-1.348,0.538-1.348,1.325v1.735h2.697l-0.35,2.725h-2.348V21H20 c0.553,0,1-0.448,1-1V4C21,3.448,20.553,3,20,3z">
-                            </path>
-                        </svg>
-                        <span class="u-screen-reader-text">Facebook</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://twitter.com/Akshay_2574">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                            style="fill:rgba(0, 0, 0, 1);transform:;-ms-filter:">
-                            <path
-                                d="M19.633,7.997c0.013,0.175,0.013,0.349,0.013,0.523c0,5.325-4.053,11.461-11.46,11.461c-2.282,0-4.402-0.661-6.186-1.809 c0.324,0.037,0.636,0.05,0.973,0.05c1.883,0,3.616-0.636,5.001-1.721c-1.771-0.037-3.255-1.197-3.767-2.793 c0.249,0.037,0.499,0.062,0.761,0.062c0.361,0,0.724-0.05,1.061-0.137c-1.847-0.374-3.23-1.995-3.23-3.953v-0.05 c0.537,0.299,1.16,0.486,1.82,0.511C3.534,9.419,2.823,8.184,2.823,6.787c0-0.748,0.199-1.434,0.548-2.032 c1.983,2.443,4.964,4.04,8.306,4.215c-0.062-0.3-0.1-0.611-0.1-0.923c0-2.22,1.796-4.028,4.028-4.028 c1.16,0,2.207,0.486,2.943,1.272c0.91-0.175,1.782-0.512,2.556-0.973c-0.299,0.935-0.936,1.721-1.771,2.22 c0.811-0.088,1.597-0.312,2.319-0.624C21.104,6.712,20.419,7.423,19.633,7.997z">
-                            </path>
-                        </svg>
-                        <span class="u-screen-reader-text">Twitter</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://www.instagram.com/akshayvenugopal007">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                            style="fill:rgba(0, 0, 0, 1);transform:;-ms-filter:">
-                            <path
-                                d="M11.999,7.377c-2.554,0-4.623,2.07-4.623,4.623c0,2.554,2.069,4.624,4.623,4.624c2.552,0,4.623-2.07,4.623-4.624 C16.622,9.447,14.551,7.377,11.999,7.377L11.999,7.377z M11.999,15.004c-1.659,0-3.004-1.345-3.004-3.003 c0-1.659,1.345-3.003,3.004-3.003s3.002,1.344,3.002,3.003C15.001,13.659,13.658,15.004,11.999,15.004L11.999,15.004z">
-                            </path>
-                            <circle cx="16.806" cy="7.207" r="1.078"></circle>
-                            <path
-                                d="M20.533,6.111c-0.469-1.209-1.424-2.165-2.633-2.632c-0.699-0.263-1.438-0.404-2.186-0.42 c-0.963-0.042-1.268-0.054-3.71-0.054s-2.755,0-3.71,0.054C7.548,3.074,6.809,3.215,6.11,3.479C4.9,3.946,3.945,4.902,3.477,6.111 c-0.263,0.7-0.404,1.438-0.419,2.186c-0.043,0.962-0.056,1.267-0.056,3.71c0,2.442,0,2.753,0.056,3.71 c0.015,0.748,0.156,1.486,0.419,2.187c0.469,1.208,1.424,2.164,2.634,2.632c0.696,0.272,1.435,0.426,2.185,0.45 c0.963,0.042,1.268,0.055,3.71,0.055s2.755,0,3.71-0.055c0.747-0.015,1.486-0.157,2.186-0.419c1.209-0.469,2.164-1.424,2.633-2.633 c0.263-0.7,0.404-1.438,0.419-2.186c0.043-0.962,0.056-1.267,0.056-3.71s0-2.753-0.056-3.71C20.941,7.57,20.801,6.819,20.533,6.111z M19.315,15.643c-0.007,0.576-0.111,1.147-0.311,1.688c-0.305,0.787-0.926,1.409-1.712,1.711c-0.535,0.199-1.099,0.303-1.67,0.311 c-0.95,0.044-1.218,0.055-3.654,0.055c-2.438,0-2.687,0-3.655-0.055c-0.569-0.007-1.135-0.112-1.669-0.311 c-0.789-0.301-1.414-0.923-1.719-1.711c-0.196-0.534-0.302-1.099-0.311-1.669c-0.043-0.95-0.053-1.218-0.053-3.654 c0-2.437,0-2.686,0.053-3.655c0.007-0.576,0.111-1.146,0.311-1.687c0.305-0.789,0.93-1.41,1.719-1.712 c0.534-0.198,1.1-0.303,1.669-0.311c0.951-0.043,1.218-0.055,3.655-0.055c2.437,0,2.687,0,3.654,0.055 c0.571,0.007,1.135,0.112,1.67,0.311c0.786,0.303,1.407,0.925,1.712,1.712c0.196,0.534,0.302,1.099,0.311,1.669 c0.043,0.951,0.054,1.218,0.054,3.655c0,2.436,0,2.698-0.043,3.654H19.315z">
-                            </path>
-                        </svg>
-                        <span class="u-screen-reader-text">Instagram</span>
-                    </a>
-                </li>
-                <!-- <li>
-                    <a href="#0">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M20.66 6.98a9.932 9.932 0 0 0-3.641-3.64C15.486 2.447 13.813 2 12 2s-3.486.447-5.02 1.34c-1.533.893-2.747 2.107-3.64 3.64S2 10.187 2 12s.446 3.487 1.34 5.02a9.924 9.924 0 0 0 3.641 3.64C8.514 21.553 10.187 22 12 22s3.486-.447 5.02-1.34a9.932 9.932 0 0 0 3.641-3.64C21.554 15.487 22 13.813 22 12s-.446-3.487-1.34-5.02zM12 3.66c2 0 3.772.64 5.32 1.919-.92 1.174-2.286 2.14-4.1 2.9-1.002-1.813-2.088-3.327-3.261-4.54A7.715 7.715 0 0 1 12 3.66zM5.51 6.8a8.116 8.116 0 0 1 2.711-2.22c1.212 1.201 2.325 2.7 3.34 4.5-2 .6-4.114.9-6.341.9-.573 0-1.006-.013-1.3-.04A8.549 8.549 0 0 1 5.51 6.8zM3.66 12c0-.054.003-.12.01-.2.007-.08.01-.146.01-.2.254.014.641.02 1.161.02 2.666 0 5.146-.367 7.439-1.1.187.373.381.793.58 1.26-1.32.293-2.674 1.006-4.061 2.14S6.4 16.247 5.76 17.5c-1.4-1.587-2.1-3.42-2.1-5.5zM12 20.34c-1.894 0-3.594-.587-5.101-1.759.601-1.187 1.524-2.322 2.771-3.401 1.246-1.08 2.483-1.753 3.71-2.02a29.441 29.441 0 0 1 1.56 6.62 8.166 8.166 0 0 1-2.94.56zm7.08-3.96a8.351 8.351 0 0 1-2.58 2.621c-.24-2.08-.7-4.107-1.379-6.081.932-.066 1.765-.1 2.5-.1.799 0 1.686.034 2.659.1a8.098 8.098 0 0 1-1.2 3.46zm-1.24-5c-1.16 0-2.233.047-3.22.14a27.053 27.053 0 0 0-.68-1.62c2.066-.906 3.532-2.006 4.399-3.3 1.2 1.414 1.854 3.027 1.96 4.84-.812-.04-1.632-.06-2.459-.06z"></path></svg>
-                        <span class="u-screen-reader-text">Dribbble</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#0">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M11.99 2C6.472 2 2 6.473 2 11.99c0 4.232 2.633 7.85 6.35 9.306-.088-.79-.166-2.006.034-2.868.182-.78 1.172-4.966 1.172-4.966s-.299-.599-.299-1.484c0-1.388.805-2.425 1.808-2.425.853 0 1.264.64 1.264 1.407 0 .858-.546 2.139-.827 3.327-.235.994.499 1.805 1.479 1.805 1.775 0 3.141-1.872 3.141-4.575 0-2.392-1.719-4.064-4.173-4.064-2.843 0-4.512 2.132-4.512 4.335 0 .858.331 1.779.744 2.28a.3.3 0 0 1 .069.286c-.076.315-.245.994-.277 1.133-.044.183-.145.222-.335.134-1.247-.581-2.027-2.405-2.027-3.871 0-3.151 2.289-6.045 6.601-6.045 3.466 0 6.159 2.469 6.159 5.77 0 3.444-2.171 6.213-5.184 6.213-1.013 0-1.964-.525-2.29-1.146l-.623 2.374c-.225.868-.834 1.956-1.241 2.62a10 10 0 0 0 2.958.445c5.517 0 9.99-4.473 9.99-9.99S17.507 2 11.99 2"></path></svg>
-                        <span class="u-screen-reader-text">Pinterest</span>
-                    </a>
-                </li> -->
-            </ul> <!-- end s-intro__social -->
-
-            <div class="s-intro__content-media">
-                <img src="images/intro-bg.jpg" srcset="images/akshay-bg.jpg 1x, images/akshay-bg.jpg 2x" alt="">
-            </div> <!-- s-intro__content-media -->
-
-            <div class="s-intro__btn-download">
-                <a class="btn btn--stroke"
-                    href="https://akshayvenugopal07.github.io/assets/akshay_venugopal_cv.pdf">Get My CV</a>
-            </div> <!-- end s-intro__btn-download -->
-
-            <div class="s-intro__scroll-down">
-                <a href="#about" class="smoothscroll">
-                    <div class="scroll-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                            style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;">
-                            <path
-                                d="M11.178 19.569a.998.998 0 0 0 1.644 0l9-13A.999.999 0 0 0 21 5H3a1.002 1.002 0 0 0-.822 1.569l9 13z">
-                            </path>
-                        </svg>
-                    </div>
-                    <span class="scroll-text u-screen-reader-text">Scroll Down</span>
-                </a>
-            </div> <!-- s-intro__scroll-down -->
-
-        </section> <!-- end s-intro -->
-
-
-        <!-- # about
-        ================================================== -->
-        <section id="about" class="s-about target-section">
-
-            <div class="row s-about__content">
-                <div class="column xl-12">
-
-                    <div class="section-header" data-num="01">
-                        <h2 class="text-display-title">About Me.</h2>
-                    </div> <!-- end section-header -->
-
-                    <p class="attention-getter">
-                        Experienced software engineer focused on building seamless user experiences. To bolster my
-                        technical and professional skills and mold new frontiers with the organization.
-                    </p>
-
-                    <!-- <p class="attention-getter">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit. Ut enim ad minim     
-                    </p> -->
-
-                    <div class="grid-list-items s-about__blocks">
-
-                        <div class="grid-list-items__item s-about__block">
-                            <h4 class="s-about__block-title">Experience</h4>
-                            <ul class="s-about__list">
-                                <li>
-                                    HighLevel
-                                    <span>Lead Engineer</span>
-                                </li>
-                                <li>
-                                    Simpl
-                                    <span>Staff Software Engineer</span>
-                                </li>
-                                <li>
-                                    KeyValue Systems
-                                    <span>Senior Software Engineer</span>
-                                </li>
-                                <li>
-                                    Cabot
-                                    <span>Software Engineer L2</span>
-                                </li>
-                            </ul>
-                        </div> <!--end s-about__block -->
-
-                        <div class="grid-list-items__item s-about__block">
-                            <h4 class="s-about__block-title">Awards</h4>
-
-                            <ul class="s-about__list">
-                                <li>
-                                    <a href="#0">
-                                        Nominated Best Performer at Simpl
-                                        <span>Awards — 2023</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#0">
-                                        Winner of Simpl Hackathon
-                                        <span>Hackathon — 2023</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#0">
-                                        Best Performer at Cabot
-                                        <span>Awards — 2018, 2019</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#0">
-                                        Nominated Best Performer at Cabot
-                                        <span>Awards — 2016</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#0">
-                                        Former Member Center for High Performance Computing, FISAT
-                                        <span>Acheivements — 2015, 2016</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div> <!--end s-about__block -->
-
-                        <div class="grid-list-items__item s-about__block">
-                            <h4 class="s-about__block-title">Skills</h4>
-
-                            <ul class="s-about__list">
-                                <li>
-                                    Product Design
-                                </li>
-                                <li>
-                                    UI/UX Design
-                                </li>
-                                <li>
-                                    Prototyping
-                                </li>
-                                <li>
-                                    Frontend Development
-                                </li>
-                                <li>
-                                    UI Optimisation
-                                </li>
-                                <li>
-                                    Software Architecture
-                                </li>
-                            </ul>
-                        </div> <!--end s-about__block -->
-
-                    </div> <!-- grid-list-items -->
-
-                </div> <!--end column -->
-            </div> <!--end s-about__content -->
-
-        </section> <!-- end s-about -->
-
-
-
-        <!-- # works
-        ================================================== -->
-        <section id="works" class="s-works target-section">
-
-            <div class="row">
-                <div class="column xl-12">
-                    <div class="section-header" data-num="02">
-                        <h2 class="text-display-title">Selected Works.</h2>
-                    </div> <!-- end section-header -->
-                </div>
-            </div>
-
-            <div class="row folio-entries">
-
-                <div class="column entry">
-                    <a href="images/folio/gallery/g-turban.jpg" class="entry__link glightbox"
-                        data-glightbox="title: Simpl; description: .entry__desc-01">
-                        <div class="entry__thumb">
-                            <img src="images/folio/white_turban.jpg"
-                                srcset="images/folio/white_turban.jpg 1x, images/folio/white_turban@2x.jpg 2x" alt="">
-                        </div>
-                        <div class="entry__info">
-                            <h4 class="entry__title">Simpl</h4>
-                            <div class="entry__cat">Product Design</div>
-                        </div>
-                    </a>
-
-                    <div class="glightbox-desc entry__desc-01">
-                        <p>
-                            Worked with the payments team to enable all
-                            payments methods for Simpl. Brought in novel
-                            ideas for all payments methods and flows for
-                            higher conversion, ease of use and low overhead
-                            while not compromising on security. On the
-                            forefront was a novel experimentation framework
-                            developed inhouse.<br>
-                            <a href="#0">Technology/Tools: Svelte, Vite, React, Payment Request API, Go, NodeJS and
-                                Typescript.</a>.
-                        </p>
-                    </div>
-                </div> <!-- entry -->
-
-                <div class="column entry">
-                    <a href="images/folio/gallery/g-woodcraft.jpg" class="entry__link glightbox"
-                        data-glightbox="title: Zenyum; description: .entry__desc-02">
-                        <div class="entry__thumb">
-                            <img src="images/folio/woodcraft.jpg"
-                                srcset="images/folio/woodcraft.jpg 1x, images/folio/woodcraft@2x.jpg 2x" alt="">
-                        </div>
-                        <div class="entry__info">
-                            <h4 class="entry__title">Zenyum</h4>
-                            <div class="entry__cat">Service Architecture</div>
-                        </div>
-                    </a>
-
-                    <div class="glightbox-desc entry__desc-02">
-                        <p>
-                            Zenyum is a company that specializes in dental
-                            cosmetics with customers all over South Asia.
-                            They have solutions ranging from apps to websites
-                            and other services from pre sales to after sales to
-                            customer experience providing solutions for all.<br>
-                            <a href="#0">Technology/Tools : Angular 8, React PWA, NodeJS and WebRTC.</a>.
-                        </p>
-                    </div>
-                </div> <!-- entry -->
-
-                <div class="column entry">
-                    <a href="images/folio/gallery/g-tulips.jpg" class="entry__link glightbox"
-                        data-glightbox="title: Gray-Matter; description: .entry__desc-03">
-                        <div class="entry__thumb">
-                            <img src="images/folio/caffeine_and_tulips.jpg"
-                                srcset="images/folio/caffeine_and_tulips.jpg 1x, images/folio/caffeine_and_tulips@2x.jpg 2x"
-                                alt="">
-                        </div>
-                        <div class="entry__info">
-                            <h4 class="entry__title">Gray-Matter</h4>
-                            <div class="entry__cat">Frontend Design</div>
-                        </div>
-                    </a>
-
-                    <div class="glightbox-desc entry__desc-03">
-                        <p>
-                            Gray Matter Analytics provides breakthrough
-                            evidence-based insights that ensure healthcare
-                            organizations are predicting reimbursements while
-                            simultaneously managing costs and improving the
-                            quality of care using custom dashboards for all
-                            healthcare organizations in the fold.<br>
-                            <a href="#0">Technology/Tools : AngularJS, Angular 7, D3, Bootstrap, HTML and SCSS.</a>.
-                        </p>
-                    </div>
-                </div> <!-- entry -->
-
-                <div class="column entry">
-                    <a href="images/folio/gallery/g-grayscale.jpg" class="entry__link glightbox"
-                        data-glightbox="title: Cloud Manifold; description: .entry__desc-04">
-                        <div class="entry__thumb">
-                            <img src="images/folio/grayscale.jpg"
-                                srcset="images/folio/grayscale.jpg 1x, images/folio/grayscale@2x.jpg 2x" alt="">
-                        </div>
-                        <div class="entry__info">
-                            <h4 class="entry__title">Cloud Manifold</h4>
-                            <div class="entry__cat">Service Architecture</div>
-                        </div>
-                    </a>
-
-                    <div class="glightbox-desc entry__desc-04">
-                        <p>
-                            Mobile App/Control and Desktop app Panel for
-                            monitoring the health of HVAC (Heating,
-                            Ventilation and Air Conditioning). It is an Admin
-                            management system to create projects in
-                            worksites for customers and help manage
-                            equipment and its locations.<br>
-                            <a href="#0">Technology/Tools : Angular 5, Bootstrap, HTML, Electron and SCSS.</a>.
-                        </p>
-                    </div>
-                </div> <!-- entry -->
-
-                <div class="column entry">
-                    <a href="images/folio/gallery/g-lamp.jpg" class="entry__link glightbox"
-                        data-glightbox="title: Tabiko; description: .entry__desc-05">
-                        <div class="entry__thumb">
-                            <img src="images/folio/lamp.jpg"
-                                srcset="images/folio/lamp.jpg 1x, images/folio/lamp@2x.jpg 2x" alt="">
-                        </div>
-                        <div class="entry__info">
-                            <h4 class="entry__title">Tabiko</h4>
-                            <div class="entry__cat">Service Architecture</div>
-                        </div>
-                    </a>
-
-                    <div class="glightbox-desc entry__desc-05">
-                        <p>
-                            Tabiko's chat assistant service connects you with
-                            real guides who can answer any questions about
-                            travel in Japan. From creating customized travel
-                            plans to assist you in making reservations, book
-                            flights and reserve restaurant tables our tools have
-                            you covered.<br>
-                            <a href="#0"> AngularJS, Ionic, Node JS, Stripe Payment, Firebase.</a>.
-                        </p>
-                    </div>
-                </div> <!-- entry -->
-
-                <div class="column entry">
-                    <a href="images/folio/gallery/g-tropical.jpg" class="entry__link glightbox"
-                        data-glightbox="title: Cheers Events; description: .entry__desc-06">
-                        <div class="entry__thumb">
-                            <img src="images/folio/tropical.jpg"
-                                srcset="images/folio/tropical.jpg 1x, images/folio/tropical@2x.jpg 2x" alt="">
-                        </div>
-                        <div class="entry__info">
-                            <h4 class="entry__title">Cheers Events</h4>
-                            <div class="entry__cat">Service Architecture</div>
-                        </div>
-                    </a>
-
-                    <div class="glightbox-desc entry__desc-06">
-                        <p>
-                            It is an event management app used by the user. To
-                            create customized proposals for each client and
-                            also manage items for the event through the
-                            application and also billing.<br>
-                            <a href="#0">Technology/Tools : React JS, Redux and Javascript.</a>.
-                        </p>
-                    </div>
-                </div> <!-- entry -->
-
-            </div> <!-- folio entries -->
-
-        </section> <!-- end s-works -->
-
-
-        <!-- # numbers
-        ================================================== -->
-        <section id="numbers" class="s-numbers">
-
-            <div class="row counter-items">
-
-                <div class="column counter-items__item">
-                    <div class="num">
-                        40
-                        <span>+</span>
-                    </div>
-                    <h5>Happy Customers</h5>
-                </div> <!-- end counter-items__item -->
-
-                <div class="column counter-items__item">
-                    <div class="num">
-                        30+
-                        <span>+</span>
-                    </div>
-                    <h5>Projects Completed</h5>
-                </div> <!-- end counter-items__item -->
-
-                <div class="column counter-items__item">
-                    <div class="num">
-                        23k
-                        <span>+</span>
-                    </div>
-                    <h5>Lines of Code</h5>
-                </div> <!-- end counter-items__item -->
-
-                <div class="column counter-items__item">
-                    <div class="num">
-                        85
-                        <span>+</span>
-                    </div>
-                    <h5>Positive Feedback</h5>
-                </div> <!-- end counter-items__item -->
-
-            </div> <!-- end counter-items -->
-
-        </section> <!-- end s-numbers -->
-
-        <div class="row s-testimonials">
-            <div class="column xl-12">
-
-                <h3 class="s-testimonials__header">Some of my messages and posts</h3>
-
-                <div class="swiper-container s-testimonials__slider">
-
-                    <div class="swiper-wrapper">
-
-                        <div class="s-testimonials__slide swiper-slide">
-                            <div class="s-testimonials__author">
-                                <!-- <img src="images/avatars/user-02.jpg" alt="Author image" class="s-testimonials__avatar"> -->
-                                <cite class="s-testimonials__cite">
-                                    <strong>Payments App Detection from Web</strong>
-                                    <span>LinkedIn</span>
-                                </cite>
-                            </div>
-                            <p>
-                                One of my first attempts at writing a tech blog. Among one of the interesting things I have done. Hope this is a good read. Please let me know if there is anything I can do better love to hear your thoughts. <a href="https://www.linkedin.com/posts/akshayvenugopal_detection-of-payment-apps-from-web-activity-7196737150967529472-0CQc?utm_source=share&utm_medium=member_ios">Link</a>
-                            </p>
-                        </div> <!-- end s-testimonials__slide -->
-
-                        <div class="s-testimonials__slide swiper-slide">
-                            <div class="s-testimonials__author">
-                                <!-- <img src="images/avatars/user-03.jpg" alt="Author image" class="s-testimonials__avatar"> -->
-                                <cite class="s-testimonials__cite">
-                                    <strong>Nearby Location Detection</strong>
-                                    <span>LinkedIn</span>
-                                </cite>
-                            </div>
-                            <p>
-                                Worked on a sample project to find location points near me using Angular and NodeJS. Please let me know your thoughts. <a href="https://www.linkedin.com/posts/akshayvenugopal_nodejs-project-angular-activity-6700397092520783872-s3UT?utm_source=share&utm_medium=member_ios">Link</a>
-                            </p>
-                        </div> <!-- end s-testimonials__slide -->
-
-                        <div class="s-testimonials__slide swiper-slide">
-                            <div class="s-testimonials__author">
-                                <!-- <img src="images/avatars/user-03.jpg" alt="Author image" class="s-testimonials__avatar"> -->
-                                <cite class="s-testimonials__cite">
-                                    <strong>My 10 cents on developement</strong>
-                                    <span>Other</span>
-                                </cite>
-                            </div>
-                            <p>
-                                At its heart, engineering is about using science and math to find creative, simple and practical solutions.
-                            </p>
-                        </div> <!-- end s-testimonials__slide -->
-
-                    </div> <!-- end swiper-wrapper -->
-
-                    <div class="swiper-pagination"></div>
-
-                </div> <!-- end swiper-container -->
-
-            </div> <!-- end column -->
-        </div> <!-- end s-testimonials -->
-
-        </section> <!-- end s-works -->
-
-
-        <!-- # footer 
-        ================================================== -->
-        <footer id="footer" class="s-footer target-section">
-
-            <div class="row">
-                <div class="column lg-12">
-                    <div class="section-header light-on-dark" data-num="03">
-                        <h2 class="text-display-title">Get In Touch.</h2>
-                    </div> <!-- end section-header -->
-                </div>
-            </div>
-
-            <div class="row s-footer__content">
-
-                <div class="column xl-6 md-12 s-footer__block s-footer__about">
-                    <p class="attention-getter">
-                        Would love to hear more from you on anything under the sky find me on these platforms or if you
-                        want to shout at me directly these are my contact info. If you are intrested in more of my projects 
-                        here is a <a href="https://akshayvenugopal07.github.io/assets/projects.pdf">link</a> to the same feel free to browse.
-                    </p>
-                </div> <!-- end section-footer__about -->
-
-                <div class="column xl-6 md-12 s-footer__block s-footer__site-links">
-                    <div class="row">
-                        <div class="column xl-4 lg-5 md-6 tab-12">
-                            <h5>Follow Me</h5>
-                            <ul class="link-list">
-                                <li><a href="https://www.facebook.com/akshay.venugopal.50">Facebook</a></li>
-                                <li><a href="https://twitter.com/Akshay_2574">Twitter</a></li>
-                                <li><a href="https://www.instagram.com/akshayvenugopal007">Instagram</a></li>
-                                <li><a href="https://in.linkedin.com/in/akshayvenugopal">LinkedIn</a></li>
-                                <li><a href="https://github.com/akshayvenugopal07">GitHub</a></li>
-                            </ul>
-                        </div>
-                        <div class="column xl-6 md-6 tab-12">
-                            <h5>Contact Me</h5>
-                            <ul class="link-list">
-                                <li><a href="mailto:akshayvenugopal007@gmail.com">akshayvenugopal007@gmail.com</a></li>
-                                <li><a href="tel:+919446514810">+91 9446514810</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div> <!-- end section-footer__site-links -->
-
-            </div> <!-- end section-footer__content -->
-
-
-            <div class="row s-footer__buttons">
-
-                <div class="column xl-6 tab-12">
-                    <a href="mailto:akshayvenugopal007@gmail.com"
-                        class="btn btn--primary btn--large u-fullwidth">Message Me</a>
-                </div>
-
-                <div class="column xl-6 tab-12">
-                    <a href="https://akshayvenugopal07.github.io/assets/akshay_venugopal_cv.pdf"
-                        class="btn btn--stroke btn--large u-fullwidth">Get My CV</a>
-                </div>
-
-            </div> <!-- end section-footer__buttons -->
-
-            <div class="row s-footer__bottom">
-
-                <div class="column xl-6 lg-12">
-                    <ul class="s-footer__social social-list">
-                        <li>
-                            <a href="#0">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    style="fill:rgba(0, 0, 0, 1);transform:;-ms-filter:">
-                                    <path
-                                        d="M20,3H4C3.447,3,3,3.448,3,4v16c0,0.552,0.447,1,1,1h8.615v-6.96h-2.338v-2.725h2.338v-2c0-2.325,1.42-3.592,3.5-3.592 c0.699-0.002,1.399,0.034,2.095,0.107v2.42h-1.435c-1.128,0-1.348,0.538-1.348,1.325v1.735h2.697l-0.35,2.725h-2.348V21H20 c0.553,0,1-0.448,1-1V4C21,3.448,20.553,3,20,3z">
-                                    </path>
-                                </svg>
-                                <span class="u-screen-reader-text">Facebook</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#0">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    style="fill:rgba(0, 0, 0, 1);transform:;-ms-filter:">
-                                    <path
-                                        d="M19.633,7.997c0.013,0.175,0.013,0.349,0.013,0.523c0,5.325-4.053,11.461-11.46,11.461c-2.282,0-4.402-0.661-6.186-1.809 c0.324,0.037,0.636,0.05,0.973,0.05c1.883,0,3.616-0.636,5.001-1.721c-1.771-0.037-3.255-1.197-3.767-2.793 c0.249,0.037,0.499,0.062,0.761,0.062c0.361,0,0.724-0.05,1.061-0.137c-1.847-0.374-3.23-1.995-3.23-3.953v-0.05 c0.537,0.299,1.16,0.486,1.82,0.511C3.534,9.419,2.823,8.184,2.823,6.787c0-0.748,0.199-1.434,0.548-2.032 c1.983,2.443,4.964,4.04,8.306,4.215c-0.062-0.3-0.1-0.611-0.1-0.923c0-2.22,1.796-4.028,4.028-4.028 c1.16,0,2.207,0.486,2.943,1.272c0.91-0.175,1.782-0.512,2.556-0.973c-0.299,0.935-0.936,1.721-1.771,2.22 c0.811-0.088,1.597-0.312,2.319-0.624C21.104,6.712,20.419,7.423,19.633,7.997z">
-                                    </path>
-                                </svg>
-                                <span class="u-screen-reader-text">Twitter</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#0">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    style="fill:rgba(0, 0, 0, 1);transform:;-ms-filter:">
-                                    <path
-                                        d="M11.999,7.377c-2.554,0-4.623,2.07-4.623,4.623c0,2.554,2.069,4.624,4.623,4.624c2.552,0,4.623-2.07,4.623-4.624 C16.622,9.447,14.551,7.377,11.999,7.377L11.999,7.377z M11.999,15.004c-1.659,0-3.004-1.345-3.004-3.003 c0-1.659,1.345-3.003,3.004-3.003s3.002,1.344,3.002,3.003C15.001,13.659,13.658,15.004,11.999,15.004L11.999,15.004z">
-                                    </path>
-                                    <circle cx="16.806" cy="7.207" r="1.078"></circle>
-                                    <path
-                                        d="M20.533,6.111c-0.469-1.209-1.424-2.165-2.633-2.632c-0.699-0.263-1.438-0.404-2.186-0.42 c-0.963-0.042-1.268-0.054-3.71-0.054s-2.755,0-3.71,0.054C7.548,3.074,6.809,3.215,6.11,3.479C4.9,3.946,3.945,4.902,3.477,6.111 c-0.263,0.7-0.404,1.438-0.419,2.186c-0.043,0.962-0.056,1.267-0.056,3.71c0,2.442,0,2.753,0.056,3.71 c0.015,0.748,0.156,1.486,0.419,2.187c0.469,1.208,1.424,2.164,2.634,2.632c0.696,0.272,1.435,0.426,2.185,0.45 c0.963,0.042,1.268,0.055,3.71,0.055s2.755,0,3.71-0.055c0.747-0.015,1.486-0.157,2.186-0.419c1.209-0.469,2.164-1.424,2.633-2.633 c0.263-0.7,0.404-1.438,0.419-2.186c0.043-0.962,0.056-1.267,0.056-3.71s0-2.753-0.056-3.71C20.941,7.57,20.801,6.819,20.533,6.111z M19.315,15.643c-0.007,0.576-0.111,1.147-0.311,1.688c-0.305,0.787-0.926,1.409-1.712,1.711c-0.535,0.199-1.099,0.303-1.67,0.311 c-0.95,0.044-1.218,0.055-3.654,0.055c-2.438,0-2.687,0-3.655-0.055c-0.569-0.007-1.135-0.112-1.669-0.311 c-0.789-0.301-1.414-0.923-1.719-1.711c-0.196-0.534-0.302-1.099-0.311-1.669c-0.043-0.95-0.053-1.218-0.053-3.654 c0-2.437,0-2.686,0.053-3.655c0.007-0.576,0.111-1.146,0.311-1.687c0.305-0.789,0.93-1.41,1.719-1.712 c0.534-0.198,1.1-0.303,1.669-0.311c0.951-0.043,1.218-0.055,3.655-0.055c2.437,0,2.687,0,3.654,0.055 c0.571,0.007,1.135,0.112,1.67,0.311c0.786,0.303,1.407,0.925,1.712,1.712c0.196,0.534,0.302,1.099,0.311,1.669 c0.043,0.951,0.054,1.218,0.054,3.655c0,2.436,0,2.698-0.043,3.654H19.315z">
-                                    </path>
-                                </svg>
-                                <span class="u-screen-reader-text">Instagram</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div> <!-- end section-footer__social -->
-
-                <div class="column xl-6 lg-12 u-invisible">
-                    <p class="ss-copyright">
-                        <span>© Copyright Akshay 2023</span>
-                        <span>Design by <a href="https://styleshout.com/">StyleShout</a></span>
-                    </p>
-                </div>
-
-            </div> <!-- end section-footer__bottom -->
-
-            <div class="ss-go-top">
-                <a class="smoothscroll" title="Back to Top" href="#top">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                        style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;">
-                        <path
-                            d="M5.536 21.886a1.004 1.004 0 0 0 1.033-.064l13-9a1 1 0 0 0 0-1.644l-13-9A1 1 0 0 0 5 3v18a1 1 0 0 0 .536.886z">
-                        </path>
-                    </svg>
-                </a>
-                <span>Back To Top</span>
-            </div> <!-- end ss-go-top -->
-
-        </footer> <!-- end s-footer -->
-
-    </div> <!-- end page-wrap -->
-
-
-    <!-- Java Script
-    ================================================== -->
-    <script src="js/plugins.js"></script>
-    <script src="js/main.js"></script>
+    <div class="section-header" style="margin-top:8px"><span class="num">[01b]</span><h2>Awards &amp; Achievements</h2></div>
+    <div class="awards">
+      <div class="award"><div class="medal">🏆</div><div><strong>Nominated Best Performer — Simpl</strong><span>Awards — 2023</span></div></div>
+      <div class="award"><div class="medal">🥇</div><div><strong>Winner, Simpl Hackathon</strong><span>Hackathon — 2023</span></div></div>
+      <div class="award"><div class="medal">🏆</div><div><strong>Best Performer — Cabot</strong><span>Awards — 2018, 2019</span></div></div>
+      <div class="award"><div class="medal">🎖️</div><div><strong>Nominated Best Performer — Cabot</strong><span>Awards — 2016</span></div></div>
+      <div class="award"><div class="medal">🔬</div><div><strong>Former Member, Center for High Performance Computing</strong><span>FISAT — 2015, 2016</span></div></div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="section-header"><span class="num">[02]</span><h2>Experience</h2></div>
+    <div class="timeline">
+      <div class="job">
+        <div class="role"><span class="co">HighLevel</span> — Lead Engineer</div>
+        <div class="dates">Dec 2025 – Current · Bengaluru, India</div>
+        <ul>
+          <li>Led the credentials team; built a layer-based error-flagging &amp; locking system for the certificate/badge builder, cutting failed issuances by 18%.</li>
+          <li>Shipped an AI chat-based template generator (GPT-5 Mini) and a multi-input signature capture modal that drove 60% adoption of hand-drawn signatures.</li>
+          <li>Found and fixed a cross-location RBAC vulnerability; migrated the build pipeline (Webpack→RSpack, Yarn→pnpm), cutting build time from 3 min to under 2.</li>
+        </ul>
+        <div class="stack"><b>Stack:</b> Vue (Module Federation), NodeJS, NestJS, Canvas, MongoDB, GCP, Jenkins</div>
+      </div>
+      <div class="job">
+        <div class="role"><span class="co">Simpl</span> — Staff Software Engineer</div>
+        <div class="dates">Sept 2021 – Nov 2025 · Bengaluru, India</div>
+        <ul>
+          <li>Led the payments team, bringing payment success rate from 81% to 87%.</li>
+          <li>Built a novel method to detect installed payment apps on Android via the web with 100% accuracy — caught NPCI's attention.</li>
+          <li>Helped make Simpl one of the first in the country to get PCI DSS 4.0 Certification; optimized FE by 35% at 60% lower cost.</li>
+        </ul>
+        <div class="stack"><b>Stack:</b> Svelte, Vite, React, Recoil, Payment Request API, NodeJS, Postgres, TypeScript, Docker, AWS</div>
+      </div>
+      <div class="job">
+        <div class="role"><span class="co">KeyValue Systems</span> — Senior Software Engineer</div>
+        <div class="dates">March 2020 – Sept 2021 · Kochi, India</div>
+        <ul>
+          <li>Built a WebRTC + OpenCV web-based onboarding tool to capture dental issues, removing all hardware needs.</li>
+          <li>Designed end-to-end solutions for Zenyum Singapore (Sequoia Capital client); migrated their AngularJS dashboard to React, +65% performance.</li>
+        </ul>
+        <div class="stack"><b>Stack:</b> Angular, React, Redux, Next.js, PWA, NodeJS, MySQL, WebRTC</div>
+      </div>
+      <div class="job">
+        <div class="role"><span class="co">Cabot</span> — Software Engineer L2</div>
+        <div class="dates">July 2016 – March 2020 · Kochi, India</div>
+        <ul>
+          <li>Full-stack development for offshore clients across healthcare, tourism and e-commerce.</li>
+          <li>Owned projects end to end — analyze, estimate, execute, deliver — and worked within HIPAA-compliant guidelines.</li>
+        </ul>
+        <div class="stack"><b>Stack:</b> AngularJS, Angular, React, React Native, D3, Electron, Ionic, Bootstrap</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="works">
+    <div class="section-header"><span class="num">[03]</span><h2>Quest Log — Selected Works</h2></div>
+    <div class="note">No product screenshots yet — send me real banners/screens for any of these and I'll swap them in. Until then each card gets a standard gradient banner keyed to its category so the grid still looks intentional.</div>
+    <div class="grid">
+      <div class="card"><div class="thumb" style="background:linear-gradient(135deg,#4a2b1f,#e05a2b)">PAYMENTS / FINTECH</div><div class="body"><h4>Simpl</h4><div class="tag">Product · Payments</div><p>All payment methods + a novel in-house experimentation framework.</p></div></div>
+      <div class="card"><div class="thumb" style="background:linear-gradient(135deg,#1f2b28,#2b8f6e)">HEALTHCARE</div><div class="body"><h4>Zenyum</h4><div class="tag">Service Architecture</div><p>End-to-end dental cosmetics platform, apps to post-sales.</p></div></div>
+      <div class="card"><div class="thumb" style="background:linear-gradient(135deg,#20242f,#3d5a99)">HEALTHCARE / DATA</div><div class="body"><h4>Gray-Matter</h4><div class="tag">Frontend Design</div><p>Custom dashboards predicting reimbursements for healthcare orgs.</p></div></div>
+      <div class="card"><div class="thumb" style="background:linear-gradient(135deg,#2b2320,#c98a3e)">IoT / ADMIN</div><div class="body"><h4>Cloud Manifold</h4><div class="tag">Service Architecture</div><p>Mobile + desktop panel for monitoring HVAC health across worksites.</p></div></div>
+      <div class="card"><div class="thumb" style="background:linear-gradient(135deg,#241f2e,#8956c9)">TRAVEL</div><div class="body"><h4>Tabiko</h4><div class="tag">Full Stack</div><p>Chat assistant connecting travellers in Japan with real guides.</p></div></div>
+      <div class="card"><div class="thumb" style="background:linear-gradient(135deg,#2a1f22,#c94f6d)">EVENTS</div><div class="body"><h4>Cheers Events</h4><div class="tag">Frontend</div><p>Event management app — proposals, item tracking and billing.</p></div></div>
+    </div>
+    <div class="more-note">
+      <a href="works.html">View all 11 projects in the full archive →</a>
+      <a href="assets/akshay-venugopal-projects.pdf" target="_blank" rel="noopener">↓ Download all projects (PDF)</a>
+    </div>
+  </section>
+
+  <section id="interactive">
+    <div class="section-header"><span class="num">[04]</span><h2>Try It — Live Terminal</h2></div>
+    <p class="terminal-note">A real, working mini-terminal. Type <span class="accent">help</span> to see commands — it can answer <span class="accent">whoami</span>, <span class="accent">experience</span>, <span class="accent">skills</span>, <span class="accent">awards</span>, and a couple of easter eggs. It only runs a fixed set of built-in commands — nothing you type is evaluated as code.</p>
+    <div class="terminal">
+      <div class="tbar"><div class="dot" style="background:#e05a2b"></div><div class="dot" style="background:#e0b02b"></div><div class="dot" style="background:#2be07a"></div><span>akshay@portfolio: ~</span></div>
+      <div class="tbody" id="termBody">
+        <div class="line hint">Portfolio Terminal v1.0 — type 'help' to get started.</div>
+        <div class="prompt-line"><span class="p">&gt;</span><input id="termInput" autocomplete="off" spellcheck="false" maxlength="40" aria-label="Terminal command input"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="writing">
+    <div class="section-header"><span class="num">[05]</span><h2>Writing &amp; Posts</h2></div>
+    <div class="writing-empty">No posts yet — this section is wired up and ready to go. Send over the LinkedIn/Medium posts (or native write-ups) you'd like featured here and they'll show up as cards, with a full archive page alongside this one.</div>
+  </section>
+
+  <section id="contact">
+    <div class="section-header"><span class="num">[06]</span><h2>Get In Touch</h2></div>
+    <div class="contact-box">
+      <div class="contact-links">
+        <a href="mailto:akshayvenugopal007@gmail.com">akshayvenugopal007@gmail.com</a>
+        <a href="tel:+919446514810">+91 94465 14810</a>
+      </div>
+      <a class="btn-primary" style="text-decoration:none;padding:14px 24px;font-family:var(--font-mono);font-weight:700;font-size:13px" href="mailto:akshayvenugopal007@gmail.com">SEND_MESSAGE() — mailto, no form</a>
+    </div>
+  </section>
+
+  <footer>
+    <div>© Akshay Venugopal — 2026</div>
+    <ul class="social-list">
+      <li><a href="https://in.linkedin.com/in/akshayvenugopal" target="_blank" rel="noopener">LinkedIn</a></li>
+      <li><a href="https://github.com/akshayvenugopal07" target="_blank" rel="noopener">GitHub</a></li>
+      <li><a href="https://twitter.com/Akshay_2574" target="_blank" rel="noopener">Twitter</a></li>
+      <li><a href="https://www.instagram.com/akshayvenugopal007" target="_blank" rel="noopener">Instagram</a></li>
+    </ul>
+    <div>console.log("thanks for visiting")</div>
+  </footer>
+</div>
+
+<a href="#top" class="go-top" id="goTop" aria-label="Back to top">↑</a>
+<div class="konami-banner" id="konamiBanner">🎮 Konami code accepted — achievement unlocked!</div>
+
+<script>
+(function(){
+  "use strict";
+
+  // mobile nav
+  var menuToggle = document.getElementById('menuToggle');
+  var mainNav = document.getElementById('mainNav');
+  menuToggle.addEventListener('click', function(){
+    mainNav.classList.toggle('open');
+  });
+  mainNav.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){ mainNav.classList.remove('open'); });
+  });
+
+  // back to top
+  var goTop = document.getElementById('goTop');
+  window.addEventListener('scroll', function(){
+    goTop.classList.toggle('show', window.scrollY > 500);
+  });
+
+  // stat count-up (values are hard-coded data-target attributes, not user input)
+  document.querySelectorAll('.stats-strip .n').forEach(function(el){
+    var target = parseInt(el.getAttribute('data-target'), 10);
+    var suffix = el.getAttribute('data-suffix') || '';
+    if (isNaN(target)) return;
+    var cur = 0;
+    var step = Math.max(1, Math.round(target / 30));
+    var timer = setInterval(function(){
+      cur += step;
+      if (cur >= target) { cur = target; clearInterval(timer); }
+      el.textContent = cur + suffix;
+    }, 30);
+  });
+
+  /* ---------------------------------------------------------------------
+     Terminal widget — SECURITY NOTES
+     - Fixed, explicit allow-list of commands (Object.create(null) so there
+       is no prototype chain to fall through to for keys like "constructor").
+     - Input is trimmed, lower-cased and length-capped (maxlength on the
+       input element too) before lookup — nothing typed is ever eval()'d,
+       passed to Function(), or used to build a selector/URL.
+     - Only .textContent is ever written to the DOM, never .innerHTML, so
+       arbitrary HTML/script in the input can't execute.
+  --------------------------------------------------------------------- */
+  var body = document.getElementById('termBody');
+  var input = document.getElementById('termInput');
+  var MAX_LEN = 40;
+  var MAX_HISTORY = 60;
+
+  var responses = Object.create(null);
+  responses['help'] = "commands: whoami, experience, skills, awards, contact, projects, sudo make-coffee, clear";
+  responses['whoami'] = "Akshay Venugopal — Software Engineer, 10 yrs, fullstack (React/Svelte/Vue + Node).";
+  responses['experience'] = "HighLevel (Lead Eng) . Simpl (Staff SWE) . KeyValue Systems (Sr SWE) . Cabot (SWE L2)";
+  responses['skills'] = "JS/TS/Python . React/Angular/Svelte/Vue . Node . AWS/GCP/Docker . RAG/Claude API/MCP";
+  responses['awards'] = "Simpl Best Performer 23 . Simpl Hackathon Winner 23 . Cabot Best Performer 18-19";
+  responses['contact'] = "akshayvenugopal007@gmail.com . +91 94465 14810";
+  responses['projects'] = "type: window.location or click 'View all 11 projects' below the Works section.";
+  responses['sudo make-coffee'] = "sudo: make-coffee: permission denied — I only ship code, not coffee.";
+
+  function printLine(text, cls){
+    var l = document.createElement('div');
+    l.className = 'line' + (cls ? ' ' + cls : '');
+    l.textContent = text; // textContent only — never innerHTML
+    body.insertBefore(l, body.lastElementChild);
+    // cap scrollback so the DOM can't be grown unbounded
+    var lines = body.querySelectorAll('.line');
+    if (lines.length > MAX_HISTORY) lines[0].remove();
+  }
+
+  input.addEventListener('keydown', function(e){
+    if (e.key !== 'Enter') return;
+    var raw = input.value.slice(0, MAX_LEN);
+    var val = raw.trim().toLowerCase().replace(/\s+/g, ' ');
+    input.value = '';
+    printLine('> ' + raw, 'accent');
+
+    if (val === '') { body.scrollTop = body.scrollHeight; return; }
+    if (val === 'clear') {
+      body.querySelectorAll('.line').forEach(function(l){ l.remove(); });
+      body.scrollTop = body.scrollHeight;
+      return;
+    }
+    if (Object.prototype.hasOwnProperty.call(responses, val)) {
+      printLine(responses[val], 'hint');
+    } else {
+      printLine("command not found: '" + val + "' — try 'help'", 'hint');
+    }
+    body.scrollTop = body.scrollHeight;
+  });
+
+  // Konami code easter egg — fixed key sequence only, no input parsing
+  var seq = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
+  var pos = 0;
+  document.addEventListener('keydown', function(e){
+    var key = e.key.length === 1 ? e.key.toLowerCase() : e.key;
+    if (key === seq[pos]) {
+      pos++;
+      if (pos === seq.length) {
+        pos = 0;
+        var banner = document.getElementById('konamiBanner');
+        banner.classList.add('show');
+        setTimeout(function(){ banner.classList.remove('show'); }, 3000);
+      }
+    } else {
+      pos = (key === seq[0]) ? 1 : 0;
+    }
+  });
+})();
+</script>
 
 </body>
-
 </html>
