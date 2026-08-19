@@ -65,6 +65,7 @@
   .hero h1{font-family:var(--font-display);font-size:clamp(30px,5vw,50px);line-height:1.18;margin:0 0 16px;font-weight:400}
   .hero h1 span{color:var(--c-accent)}
   .hero p{max-width:560px;color:var(--c-text-soft);font-size:15px;margin-bottom:26px}
+  .hero-meta{font-family:var(--font-mono);font-size:12.5px;color:var(--c-accent);font-weight:600;margin:0 0 18px}
   .btns{display:flex;flex-wrap:wrap;gap:12px}
   .btns a{display:inline-block;padding:12px 20px;font-weight:700;font-size:13px;text-decoration:none;font-family:var(--font-mono)}
   .btn-primary{background:var(--c-accent);color:#150c08}
@@ -201,8 +202,9 @@
 
   <section class="hero">
     <div class="prompt">$ whoami<span class="cursor"></span></div>
-    <h1>Akshay Venugopal —<br><span>software engineer,</span><br>10 years, fullstack.</h1>
-    <p>I've spent the last decade shipping payments, credentialing, and healthcare products end to end — from React/Svelte/Vue frontends down to Node/Postgres backends. I read a system the way I'd read a game's mechanics: find how it actually works, then find the fastest clean path through it.</p>
+    <h1>Ten years building products —<br><span>not just tickets.</span></h1>
+    <div class="hero-meta">Software Engineer · Payments · Design Tools · Healthcare — and I still like it.</div>
+    <p>I've spent the last ten years building software people depend on without thinking about it — payment flows, Canva-like design tools, healthcare dashboards, mostly the kind where a bug means someone's payment fails or an export breaks. I care more about the boring, correct fix than the clever one, and about builds that stay fast as a codebase grows.</p>
     <div class="btns">
       <a class="btn-primary" href="assets/akshay_venugopal_cv.pdf" target="_blank" rel="noopener">↓ Download Resume</a>
       <a class="btn-stroke" href="#works">See selected works</a>
@@ -223,8 +225,7 @@
     <div class="section-header"><span class="num">[01]</span><h2>About</h2></div>
     <div class="about-grid">
       <div>
-        <p>Currently a Lead Engineer at HighLevel, working on the credentials/certificate builder platform — layer-based error flagging, an AI template generator, and a signature capture system used across hundreds of locations. Before that, I led the payments team at Simpl, took payment success rates from 81% to 87%, and built a method to detect installed payment apps via the web that got NPCI's attention.</p>
-        <p>Earlier roles at KeyValue Systems and Cabot covered everything from a WebRTC-based dental-imaging tool to healthcare, tourism and e-governance platforms across Angular, React and Node. I care about clean UI, fast builds, and finding the boring-but-correct fix for gnarly production bugs.</p>
+        <p>I got into engineering because I liked figuring out how things actually worked, and ten years later that's still most of the job — though these days I get just as much out of shipping something brand new as I do fixing what's broken. I've built payment flows at Simpl, Canva-like design tools at HighLevel, and healthcare and travel platforms before that: new features taken from idea to production, plus the occasional gnarly fix along the way. Same instinct either way — understand the system for real before touching it, then build or fix it so it still works the same way a year later.</p>
       </div>
       <div>
         <div class="skill-group">
